@@ -1,0 +1,309 @@
+* {
+    box-sizing: border-box;
+    font-family: 'bebas neue',cursive;
+    color: whitesmoke;
+  }
+  
+  /* Style the body */
+  body {
+    font-family: Arial;
+    margin: 0;
+  }
+  
+  /* Header/logo Title */
+  .header {
+    padding: 5px;
+    text-align: center;
+    background: #1abc9c;
+    color: white;
+    overflow: hidden;
+    background-color: #143201;
+    height: 70px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 99;
+  }
+
+  .header h1{
+    margin-top: 10px;
+  }
+
+.container{
+  width: 100%;
+  background-color:whitesmoke;
+  margin: auto;
+  padding: 20px;
+  box-shadow: 0 0 3px rgba(rgb(0, 0, 0,.3));
+  border-radius: 5px;
+  
+}
+
+.galeri li {
+  width: 100px;
+  height: 200px;
+  /* border-radius: 50%; */
+  /* overflow: hidden; */
+  /* border: 5px solid grey; */
+  float: left;
+  position: relative;
+  margin-right: 200px;
+  margin-bottom: 150px;
+  margin-left: 10px;
+  list-style: none;
+  margin-top: 150px;
+}
+
+.galeri img{
+  margin-left: 120px;
+  width: 200px;
+  height: 200px;
+  box-shadow: 0 5px 5px 0 Rgba(120, 148, 229,.5);
+  transition: .5s;
+}
+.galeri li img{
+  border-radius: 10px 10px 10px 10px;
+} 
+
+.galeri img:hover{
+  box-shadow: 0 30px 5px 0 Rgba(120, 148, 229,.15);
+}
+
+.galeri li span {
+  display: block;
+  width: 200px;
+  height: 200px;
+  background-color: rgba(200, 200, 200,0.3);
+  border-radius: 50%;
+  position: absolute;
+  top: 0 ;
+  text-align: center;
+  line-height: 120px;
+  color: rgb(152, 150, 150);
+  text-shadow: 1px 1px 1px #ddd;
+  opacity: 0;
+  transition: .5s;
+  transform: scale(0) rotate(0);
+}
+
+
+.galeri li a:hover span {
+  opacity: 1;
+  transform: scale(1) rotate(360deg);
+    
+}
+
+.clear{
+  clear: both;
+}
+
+/* OVERLAY */
+.overlay{
+    width: 0;
+    height: 0;
+    overflow: hidden;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: rgba(0, 0, 0,0);
+    z-index: 999;
+    transition: .4s;
+    text-align: center;
+    padding: 100px 0;
+}
+
+.overlay:target{
+    width: auto;
+    height: auto;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0,.6);
+}
+
+.overlay img {
+    max-height: 100%;
+    box-shadow: 2px 2px 6px rgb(0, 0, 0,.5);
+}
+
+.overlay:target img{
+    animation: zoomIn .5s;
+    
+}
+
+.overlay .close{
+  top: 50px;
+  
+}
+
+.overlay .close{
+    position: absolute;
+    top: 50px;
+    left: 54%;
+    margin-left: -20px;
+    color: white;
+    text-decoration: none;
+    background-color: grey;
+    line-height: 10px;
+    padding: 5px;
+    opacity: 0;
+}
+
+.close:hover{
+  color: red;
+}
+
+.overlay:target .close{
+    animation: slideDown .5s .5s forwards;
+}
+
+.overlay:target .next{
+    animation: fadeIn .5s .5s forwards;
+}
+
+.overlay:target .prev{
+    animation: fadeIn .5s .5s forwards;
+}
+
+/* navigasi */
+.next, .prev{
+    width: 80px;
+    height: 80px;
+    background-image: url("Asset/nextk.png");
+    position: absolute;
+    text-indent: -9999px;
+    top: 40%;
+    margin-left: 50px;
+    opacity: 0;
+}
+
+
+.prev{
+    background-image: url("Asset/nextr.png");
+    margin-left: -10px;
+    margin-top: 2px;
+}
+
+/* ANIMASI */
+@keyframes fadeIn{
+    0%{
+        opacity: 0;
+    }
+    100%{
+        opacity: 1;
+    }
+}
+
+@keyframes zoomFade{
+    0%{
+        transform: scale(0) opacity(0);
+    }
+    100%{
+        transform: scale(1) opacity(1);
+    }
+}
+
+@keyframes slideDown{
+    0%{
+        opacity: 1;
+        margin-top: -20px;
+    }
+    100%{
+        opacity: 1;
+        margin-top: 0;
+    }
+}
+  
+  /* Column container */
+  .row {  
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+  /* Create two unequal columns that sits next to each other */
+  /* Sidebar/left column */
+  .side {
+    flex: 30%;
+    background-image: url("Asset/desktopB1.png");
+    background-size: cover;
+    border-radius: 10px 0 0 0;
+  }
+
+  .side h2{
+    margin-left: 10px;
+  }
+
+  .sosmed{
+    width: 100%;
+    padding: 20px;
+  }
+
+  .sosmed a{
+    text-decoration: none;
+  }
+
+  .sosmed a:hover {
+    color: royalblue;
+  }
+  
+  /* Main column */
+  .main {
+    flex: 70%;
+    background-image: url("Asset/desktopA.png");
+    background-size: cover;
+    padding: 20px;
+    text-align: justify;
+    padding: 15px;
+    line-height: 1.6;
+    border-radius: 0 10px 0 0;
+  }
+
+  .main a{
+    text-decoration: none;
+  }
+
+  #judul h2:hover{
+    color: #FFC947;
+  }
+
+  .main p{
+    padding: 5px;
+    margin: 5px;
+  }
+
+  table{
+    line-height: 1.6;
+    padding: 15px;
+  }
+  
+  /* Fake image, just for this example */
+  .map {
+    width: 100%;
+    padding: 20px;
+  }
+
+  iframe{
+    border-style: outset;
+  }
+  
+  /* Footer */
+  .footer {
+    padding: 10px;
+    text-align: center;
+    background: #ddd;
+    height: auto;
+    width: 100%;
+    border-radius: 0 0 10px 10px;
+  }
+
+  .footer img{
+    width: 120px;
+    height: 60px;
+  }
+  
+  /* Responsive layout - when the screen is less than 700px wide, make the two columns stack on top of each other instead of next to each other */
+  @media screen and (max-width: 700px) {
+    .row,.side {   
+      flex-direction: column;
+    }
+  }

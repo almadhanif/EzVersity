@@ -1,0 +1,222 @@
+*{
+  font-family: 'bebas neue', cursive;
+}
+
+/* ANIMASI */
+@keyframes fadeIn {
+  from{
+    opacity: 0;
+  }  
+  to{
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInUp{
+  0%{
+    opacity: 0;
+    -webkit-transform: translateY(10px);
+  }
+  100%{
+    opacity: 1;
+    -webkit-transform: translateY(0);
+  }
+}
+
+
+/* SELURUH BODY */
+body{
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  padding: 0;
+}
+
+/* NAVIGATION BAR */
+nav{
+  display: flex;
+  flex-direction: row;
+  background-color: whitesmoke;
+  width: 100%;
+  position: fixed;
+}
+nav #navLogo{
+  margin: 20px 0 0 30px;
+  flex: 3;
+}
+
+nav #navMenu{
+  background: whitesmoke;
+  padding: 10px;
+  text-align: right;
+  font-size: 20px;
+  height: 50px;
+}
+
+nav #navMenu li{
+  display: inline;
+}
+
+nav #navMenu li a{
+  text-decoration: none;
+  margin: 0 10px;
+  color: black;
+}
+
+nav #navMenu li a:hover{
+  color: #AFBD72;
+  background: white;
+}
+
+
+/* CONTAINER */
+.mycontainer{
+  background-image: url("Asset/bgInput.png");
+  padding: 0;
+  margin: 0;
+  flex: 1;
+}
+
+/* .content{
+  display: flex;
+  flex-direction: column;
+} */
+
+.content h3{
+  color: white;
+  text-align: center;
+  font-size: 30pt;
+  margin: 80px 0 60px 0;
+  animation: fadeIn 2s;
+}
+
+.content form{
+  margin-left: 250px;
+  animation: fadeInUp 2s;
+  
+}
+
+.content ul{
+  list-style-type: none;
+  }
+  
+.content li{
+  display: inline-block;
+}
+
+.content input[type="checkbox"][id^="cb"] {
+    display: none;
+}
+  
+.content label{
+    border: 1px solid transparent;
+    padding: 10px;
+    display: block;
+    position: relative;
+    margin: 10px;
+    cursor: pointer;
+}
+  
+.content label:before{
+    background-color: white;
+    color: white;
+    content: " ";
+    display: block;
+    border-radius: 50%;
+    border: 1px solid grey;
+    position: absolute;
+    top: -5px;
+    left: -5px;
+    width: 25px;
+    height: 25px;
+    text-align: center;
+    line-height: 28px;
+    transition-duration: 0.4s;
+    transform: scale(0);
+}
+  
+.content label img{
+    height: 150px;
+    width: 300px;
+    transition-duration: 0.2s;
+    transform-origin: 50% 50%;
+    border-radius: 5%;
+    border: 3px solid white;
+}
+  
+.content :checked + label{
+    border-color: #ddd;
+    border-radius: 5%;
+}
+  
+.content :checked + label:before{
+    content: "✓";
+    background-color: grey;
+    transform: scale(1);
+}
+  
+.content :checked + label img{
+    transform: scale(0.9);
+    box-shadow: 0 0 10px #333;
+    z-index: -1;
+}
+
+.button{
+  float: right;
+  margin: 50px 250px 25px 0px;
+  width: 200px;
+  animation: fadeIn 3s;
+}
+
+#btnCari{
+  appearance: none;
+  background-color: #AFBD72;
+  border: 2px solid #1A1A1A;
+  border-radius: 15px;
+  box-sizing: border-box;
+  color: black;
+  cursor: pointer;
+  display: inline-block;
+  font-family: 'bebas neue', cursive;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: normal;
+  margin: 0;
+  min-height: 60px;
+  min-width: 0;
+  outline: none;
+  padding: 16px 24px;
+  text-align: center;
+  text-decoration: none;
+  transition: all 300ms cubic-bezier(.23, 1, 0.32, 1);
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  width: 100%;
+  will-change: transform;
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+#btnCari:disabled {
+  pointer-events: none;
+}
+
+#btnCari:hover {
+  color: #fff;
+  background-color: #1A1A1A;
+  box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
+  transform: translateY(-2px);
+}
+
+#btnCari:active {
+  box-shadow: none;
+  transform: translateY(0);
+}
+
+/* FOOTER */
+
+
+.myfooter img{
+  height: 71px;
+  width: 252px;
+}

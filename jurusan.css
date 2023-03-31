@@ -1,0 +1,182 @@
+*{
+  font-family: 'bebas neue', cursive;
+}
+
+/* NAVIGATION BAR */
+nav{
+  display: flex;
+  flex-direction: row;
+  background-color: whitesmoke;
+  width: 100%;
+  position: fixed;
+}
+nav #navLogo{
+  margin: 20px 0 0 30px;
+  flex: 3;
+}
+
+nav #navMenu{
+  background: whitesmoke;
+  padding: 10px;
+  text-align: right;
+  font-size: 20px;
+  height: 50px;
+}
+
+nav #navMenu li{
+  display: inline;
+}
+
+nav #navMenu li a{
+  text-decoration: none;
+  margin: 0 10px;
+  color: black;
+}
+
+nav #navMenu li a:hover{
+  color: #AFBD72;
+  background: white;
+}
+
+.container{
+  background-image: url("asset/bgJurusan.png");
+  margin: 0;
+}
+
+@keyframes fadeIn{
+  0%{
+    opacity: 0;
+  }
+  100%{
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInUp{
+  0%{
+    opacity: 0;
+    -webkit-transform: translateY(10px);
+  }
+  100%{
+    opacity: 1;
+    -webkit-transform: translateY(0);
+  }
+}
+
+body{
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+}
+
+.header{
+  text-align: center;
+  font-size: 20pt;
+  margin: 70px 0 0 0;
+  animation: fadeIn 2s;
+  color: white;
+}
+
+.content{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 13px;
+}
+
+.content p{
+  font-size: 20pt;
+  text-align: center;
+  box-shadow: 0 4px 16px 0 rgba(0,0,0,0.2);
+  width: 55%;
+  border-radius: 5px;
+}
+
+.content #p1{
+  border: 2px solid;
+  margin: 10px 0;
+  padding: 10px 0px;
+  animation: fadeInUp 2s;
+  color: white;
+}
+
+.content #p2{
+  border: 2px solid;
+  margin: 10px 0;
+  padding: 10px 0px;
+  animation: fadeInUp 4s;
+  color: white;
+}
+
+.content #p3{
+  border: 2px solid;
+  margin: 10px 0;
+  padding: 10px 0px;
+  animation: fadeInUp 6s;
+  color: white;
+}
+
+.button{
+  margin: 10px 0 74px 780px;
+  width: 200px;
+  animation: fadeIn 5s;
+}
+
+#btnCari{
+  appearance: none;
+  background-color: #AFBD72;
+  border: 2px solid #1A1A1A;
+  border-radius: 15px;
+  box-sizing: border-box;
+  color: black;
+  cursor: pointer;
+  display: inline-block;
+  font-family: 'bebas neue', cursive;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: normal;
+  margin: 0;
+  min-height: 60px;
+  min-width: 0;
+  outline: none;
+  padding: 16px 24px;
+  text-align: center;
+  text-decoration: none;
+  transition: all 300ms cubic-bezier(.23, 1, 0.32, 1);
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  width: 100%;
+  will-change: transform;
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+#btnCari:disabled {
+  pointer-events: none;
+}
+
+#btnCari:hover {
+  color: #fff;
+  background-color: #1A1A1A;
+  box-shadow: rgba(0, 0, 0, 0.25) 0 8px 15px;
+  transform: translateY(-2px);
+}
+
+#btnCari:active {
+  box-shadow: none;
+  transform: translateY(0);
+}
+
+footer{
+  background-color: white;
+  text-align: center;
+  bottom: 0;
+  position: relative;
+  margin-top: auto;
+  min-height: 50px;
+}
+
+footer img{
+  height: 71px;
+  width: 252px;
+}

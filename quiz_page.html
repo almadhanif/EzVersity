@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="Logowebsite.png" type="image/gif" sizes="5x5">
+    <title>QuizPage</title>
+    <script src="quiz_logic.js" ></script>
+    <style>
+        /* width */
+        ::-webkit-scrollbar {
+            width: 20px;
+        }
+
+        /* Track */
+        ::-webkit-scrollbar-track {
+            box-shadow: inset 0 0 5px #7A9D01; 
+            border-radius: 10px;
+        }
+        
+        /* Handle */
+        ::-webkit-scrollbar-thumb {
+            background: #7A9D01; 
+            border-radius: 10px;
+        }
+
+        /* Handle on hover */
+        ::-webkit-scrollbar-thumb:hover {
+            background: #AFBD72; 
+        }
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        #quiz_window{
+            display: flex;
+            flex-direction: column;
+            background:linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url("assets/background.jpg");
+            /* filter: brightness(0.3); */
+            /* Full height */
+            height: 100%; 
+
+            /* Center and scale the image nicely */
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        /* css appbar */
+        #appbar{
+            width: 100%;
+            height: 33px;
+        }
+        /* container title */
+        #titlecont{
+            border-left: 33px solid transparent;
+            border-right: 33px solid transparent;
+            height: 33px;
+            font-family: 'bebas neue', cursive;
+            background: linear-gradient(90deg, #143201, #7A9D01);
+            margin: 0 auto;
+            width: calc(100% - 110px);
+
+            text-align: center;
+            background-clip: content-box;
+            position: relative;
+            animation: titleAnim 1s;
+        }
+        @keyframes titleAnim {
+            from{
+                width: calc(100% - 80vw - 10px);
+            }
+            to{
+                width: calc(100% - 110px);
+            }
+        }
+        #titlecont::after, #titlecont::before{
+            content: '';
+            position: absolute;
+            width: 33px;
+            height: 100%;
+        }
+        #titlecont::before {
+            background: linear-gradient(45deg, transparent 50%, #143201 50%);
+            right: 100%;
+            top: 0%;
+        }
+        #titlecont::after {
+            background: linear-gradient(315deg, transparent 50%, #7A9D01 50%);
+            left: 100%;
+            top: 0%;
+        }
+        #quiz_title{
+            color: #ffffff;
+            user-select: none;
+        }
+
+        #kotak-jawab{
+            display:inline;
+        }
+
+        
+        #hr1{
+            height: 5px;
+            background: linear-gradient(
+            to right,#143201, #7A9D01);
+            margin-top:0px;
+            border: 0px;
+            box-shadow:  3px 3px 5px rgba(51,51,51,1);
+        }
+        #nocont{
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            height: 100%;
+            align-items: center;
+        }
+        /* container jam */
+        #jamcont{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 50px;
+            font-family: 'bebas neue', cursive;
+            background-color: #7A9D01;
+            height: 40px;
+            position: relative;
+            text-align: center;
+            color: white;
+            animation: pinggirAnim 1s;
+        }
+
+        @keyframes pinggirAnim {
+            from{
+                width: 40vw;
+            }  
+            to{
+                width: 50px;
+            }
+        }
+        
+        #jamcont::before {
+            content: '';
+            position: absolute;
+            width: 38px;
+            height: 100%;
+            background: linear-gradient(315deg, #7A9D01 50%, transparent 50%);
+            right: 100%;
+        }
+        /* container nomor */
+        #nomorcont{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: 'bebas neue', cursive;
+            background-color: #143201;
+            color: white;
+            width: 50px;
+            height: 40px;
+            position: relative;
+            text-align: center;
+            animation: pinggirAnim 1s;
+            
+        }
+        #nomorcont:hover{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: 'bebas neue', cursive;
+            background-color: #7A9D01;
+            color: white;
+            width: 50px;
+            height: 40px;
+            position: relative;
+            text-align: center;
+            user-select: none;
+        }
+        #nomorcont::after {
+            content: '';
+            position: absolute;
+            width: 40px;
+            height: 100%;
+            background: linear-gradient(45deg, #143201 50%, transparent 50%);
+            left: 100%;
+        }
+        #nomorcont:hover::after {
+            content: '';
+            position: absolute;
+            width: 40px;
+            height: 100%;
+            background: linear-gradient(45deg, #7A9D01 50%, transparent 50%);
+            left: 100%;
+        }
+        #jamcont #jam{
+            user-select: none;
+        }
+        
+        /* css kontent quiz */
+        
+        #quiz_content{
+            overflow-x: hidden;
+            overflow-y: auto;
+            height: calc(100vh - 78px);
+        }
+        /* container pertanyaan */
+        #questcont{
+            padding: 10px;
+            display: flex;
+            align-items: center;
+        }
+
+        #Pertanyaan{
+            width: 100%;
+            height: fit-content;
+
+            padding: 10px;
+            border: 1px solid #7A9D01;
+            font-family: 'bebas neue', cursive;
+            border-image-slice: 1;
+            color: white;
+            border-radius: 10px;
+            background-color: #143201;
+            animation: questAnim 1s;
+        }
+        @keyframes questAnim {
+            from{
+                opacity: 0;
+            }
+            to{
+                opacity: 1;
+            }
+        }
+        /* container choice */
+        #choicecont{
+            padding: 10px;
+            position: inherit;
+            animation: choiceAnim 1s;
+        }
+        #choicecont input[type="radio"] {
+            display: none;
+        } 
+        
+        #choicecont label {
+            display: block;
+            margin-top: 8px;
+            padding: 10px;
+            width: 100%;
+            border-left: 4px solid #7A9D01;
+            font-family: 'bebas neue', cursive;
+            background-color: #143201;
+            color: #ffffff;
+        }
+        @keyframes choiceAnim {
+            from{
+                margin-top: 50px;
+                opacity: 0;
+            }
+            to{
+                margin-top: 8x;
+                opacity: 1;
+            }
+        }
+        
+        #choicecont input[type="radio"]:checked + label {
+            background-color: #7A9D01;
+            color: white;
+            border-left: 4px solid #AFBD72;
+        }
+        #choicecont input+label {
+            transition: 0.5s;
+        }
+        
+        #choicecont input+label:hover {
+            background-color: #7A9D01;
+            color: white;
+            border-left: 4px solid #AFBD72;
+            transition: 0.5s;
+        }
+        
+        #abcd{
+            float: left;
+            font-family: 'bebas neue', cursive;
+        }
+        
+        /* css bottombar */
+        #bottombar{
+            bottom: 0;
+            width: 100%;
+            height: 45px;
+        }
+        #buttoncont{
+            display: flex;
+            width: 100%;
+            flex-direction: row;
+            justify-content: space-between;
+        }
+        
+        #buttoncont button{
+            border-radius: 10px;
+            width: 80px;
+            border: 1px solid #7A9D01;
+            background-color: #143201;
+            font-family: 'bebas neue', cursive;
+            color: whitesmoke;
+            box-shadow:  3px 3px 5px rgba(51,51,51,1);
+            height: 40px;
+        }
+        #buttoncont button:hover{
+            border-radius: 10px;
+            width: 80px;
+            border: 1px solid #AFBD72;
+            background-color: #7A9D01;
+            color: white;
+            transform: 0.5s;
+            box-shadow:  3px 3px 5px rgba(51,51,51,1);
+            height: 40px;
+        }
+        #pb{
+            width: 100%;
+            position: relative;
+            border: 1px solid #AFBD72;
+            margin-left: 10px;
+            margin-right: 10px;
+            border-radius: 18.5px;
+            background-color: #143201;
+        }
+        #pbv{
+            position: absolute;
+            z-index: 1;
+            height: 100%;
+            width: 0%;
+            transition: width 1s;
+            border-radius: 18.5px;
+            background-image: linear-gradient(to top right, #143201, #7A9D01, #AFBD72);
+            background-color: #7A9D01;
+        }
+        #progress_precent{
+            display: flex; 
+            z-index: 2;
+            position: absolute;
+            font-family: 'bebas neue', cursive;
+            font-size: 20px;
+            align-items: center; 
+            justify-content: center;
+            color: white; 
+            width: 100%; 
+            height: 100%;
+            user-select: none;
+        }
+        /* css popup */
+        #soalcont2{
+            margin-top: 10px;
+            margin-left: 10px;
+            display: flex;
+            flex-wrap:wrap;
+            width: 230px;
+            height: 250px;
+            overflow-x: hidden;
+            overflow-y: auto;
+            align-content: flex-start;
+        } 
+        #soalcont {
+            background-color: #143201;
+            position: absolute;
+            border: 0.1px solid #AFBD72;
+            font-family: 'bebas neue', cursive;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            display: none;
+            width: 250px;
+            height: 300px;
+            border-radius: 20px;
+            transition: 1s;
+        }
+        #soalcont button{
+            width: 30px;
+            height: 30px;
+            border: 1px solid #AFBD72;
+            border-radius: 15px;
+            background-color: #143201;
+            color: white;
+            border: 0px;
+        }
+        #soalcont button:hover{
+            width: 30px;
+            height: 30px;
+            border: 1px solid #AFBD72;
+            color: white;
+            background-color: #7A9D01;
+            border-radius: 15px;
+            border: 0px;
+        }
+        #belum_dijawab{
+            display: flex;
+            border-radius: 8px;
+            border: 0.1px solid #AFBD72;
+            color: white;
+            justify-content: center;
+            align-items: center;
+            width: 30px;
+            height: 30px;
+            text-align: center;
+            background-color: #143201;
+            user-select: none;
+        }
+        #belum_dijawab:hover{
+            display: flex;
+            border-radius: 8px;
+            border: 0.1px solid #AFBD72;
+            justify-content: center;
+            align-items: center;
+            width: 30px;
+            height: 30px;
+            text-align: center;
+            background-color: #7A9D01;
+            user-select: none;
+        }
+        #sudah_dijawab{
+            display: flex;
+            border-radius: 8px;
+            border: 0.1px solid #AFBD72;
+            justify-content: center;
+            align-items: center;
+            width: 30px;
+            height: 30px;
+            text-align: center;
+            background-color: #7A9D01;
+            color: white;
+            user-select: none;
+        }
+        #sudah_dijawab:hover{
+            display: flex;
+            border-radius: 8px;
+            border: 0.1px solid #7A9D01;
+            justify-content: center;
+            align-items: center;
+            width: 30px;
+            height: 30px;
+            text-align: center;
+            background-color: #AFBD72;
+            user-select: none;
+        }
+        #close_popup{
+            display: flex;
+            flex-direction: row;
+            border-radius: 15px 20px 0px 15px;
+            height: 30px;
+            width: 100%;
+            background-color: #7A9D01;
+        }
+        #tekspopup{
+            padding-top: 5px;
+            padding-left: 10px;
+            user-select: none;
+            color: white;
+        }
+        #black_background{
+            background-color: rgba(0,0,0,0.4);
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            left: 0%;
+            top: 0%;
+            display: none;
+        }
+    </style>
+
+</head>
+<body onload="firstSetup()">
+     <div id="quiz_window">
+        <div id="black_background2"></div>
+        <div id="appbar">
+            <div id="nocont">
+                <div id = "nomorcont" onclick="showPopup()" ><p id="nomor" ></p></div>
+                <div id="titlecont"><h2 id="quiz_title" ></h2></div>
+                <div id = "jamcont"><p id="jam"></p></div>
+            </div>
+        </div>
+        <div id="quiz_content">
+            <div id="questcont">
+                <p id="Pertanyaan"></p>
+            </div>
+
+            <div id="choicecont">
+                <input type="radio" name="pilihan" data-id="0" id="pilihan0" onclick="saveAnswer()">
+                <label for="pilihan0" id="kotak-jawab">
+                    <p id ="abcd">A.&nbsp;</p>
+                    <p id="textPilihan0"></p>
+                </label>
+                
+
+                <input type="radio" name="pilihan" data-id="1" id="pilihan1" onclick="saveAnswer()">
+                <label for="pilihan1" id="kotak-jawab">
+                    <p id ="abcd">B.&nbsp;</p>
+                    <p id="textPilihan1"></p>
+                </label>
+            
+
+                <input type="radio" name="pilihan" data-id="2" id="pilihan2" onclick="saveAnswer()">
+                <label for="pilihan2" id="kotak-jawab">
+                    <p id ="abcd">C.&nbsp;</p>
+                    <p id="textPilihan2"></p>
+                </label>
+        
+                <input type="radio" name="pilihan" data-id="3" id="pilihan3" onclick="saveAnswer()">
+                <label for="pilihan3" id="kotak-jawab">
+                    <p id ="abcd">D.&nbsp;</p>
+                    <p id="textPilihan3"></p>
+                </label>
+            
+            </div>
+        </div>
+        <div id="bottombar">
+            <center><hr id="hr1"></center>
+            <div id="buttoncont">
+                <button onclick="backQuestion()" id="backbtn">Back</button>
+                <div id="pb">
+                    <p id="progress_precent"></p>
+                    <div id="pbv"></div>
+                </div>
+                <button onclick="nextQuestion()" id="nextbtn">Next</button>
+            </div>
+        </div>
+    </div> 
+    <div id="black_background" onclick="hidePopup()">
+
+    </div>
+    <div id="soalcont" >
+        <div id="close_popup">
+            <button onclick="hidePopup()">X</button>
+            <p id="tekspopup">Daftar Soal</p>
+        </div>
+        <div id="soalcont2"> 
+        </div>
+    </div><!-- 
+    <script>
+        const quiz_content = document.querySelector("#quiz_content");
+
+        function resizeListener() {
+            quiz_content.style.innerHeight = window.innerHeight;
+            quiz_content.style.innerWidth = window.innerWidth;
+            console.log( window.innerHeight);
+        }
+
+        window.addEventListener("resize", resizeListener);
+    </script> -->
+</body>
+</html>

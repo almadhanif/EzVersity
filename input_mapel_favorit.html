@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="Logowebsite.png" type="image/gif" sizes="5x5">
+    <title>Pilih Mata Pelajaran Favorit</title>
+
+    <link rel="stylesheet" href="input_mapel_favorit.css">
+</head>
+<body>
+    <!-- NAVIGATION BAR -->
+    <nav>
+        <div id="navLogo">
+            <a href="index.html">
+                <img src="Asset/Logowebsite.png" alt="Logo" width="120" height="40" />
+            </a>
+        </div>
+        <div id="navMenu">
+            <ul>
+                <li>
+                    <a href="index.html#Kampus">Kampus</a>
+                </li>
+                <li>
+                    <a href="index.html#Founder">About</a>
+                </li>
+                <li>
+                    <a class="active" href="index.html#footer">Contact Us</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- ISI -->
+    <div class="mycontainer">
+        <div class="content">
+            <main>
+                <h3>Pilih Dua Mata Pelajaran Favorit Kamu</h3>
+                <form name="frmMapel">
+                    <ul>
+                        <li>
+                            <input type="checkbox" id="cbFisika" name="pilihMapel" value="1" onclick="chkControl(0)">
+                            <label for="cbFisika"><img src="Asset/Icon_Fisika.png"></label>
+                        </li>
+                        <li>
+                            <input type="checkbox" id="cbKimia" name="pilihMapel" value="2" onclick="chkControl(1)">
+                            <label for="cbKimia"><img src="Asset/Icon_Kimia.png"></label>
+                        </li>
+                        <li>
+                            <input type="checkbox" id="cbBiologi" name="pilihMapel" value="3" onclick="chkControl(2)">
+                            <label for="cbBiologi"><img src="Asset/Icon_Biologi.png"></label>
+                        </li>
+                    </ul>
+                </form>
+                <div class="button">
+                    <button id="btnCari" onclick="cariJurusan()">Cari Jurusan</button>
+                </div>
+            </main>
+        </div>
+    
+        <!-- FOOTER -->
+        
+    </div>
+
+    <script src="mapel_control.js"></script>
+</body>
+</html>

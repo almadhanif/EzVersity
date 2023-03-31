@@ -1,0 +1,115 @@
+*{
+    font-family: 'bebas neue', cursive;
+}
+nav{
+    display: flex;
+    flex-direction: row;
+    background-color: whitesmoke;
+    position: fixed;
+    width: 100%;
+}
+nav #navLogo{
+    margin: 20px 0 0 30px;
+    flex: 3;
+    
+}
+  
+nav #navMenu{
+    background: whitesmoke;
+    padding: 10px;
+    text-align: right;
+    font-size: 20px;
+    height: 50px;
+}
+  
+nav #navMenu li{
+    display: inline;
+}
+  
+nav #navMenu li a{
+    text-decoration: none;
+    margin: 0 10px;
+    color: black;
+}
+  
+nav #navMenu li a:hover{
+    color: #AFBD72;
+    background: whitesmoke;
+}
+body{
+    background-image: url("Asset/bg_2_2-1.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    padding: 0px;
+    margin: 0px;
+}
+.container2{
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+}
+.img{
+    position: absolute;
+    width: 465px;
+    height: 130px;
+    top: 150px;
+    left: 440px;
+    padding-bottom: 30px;
+}
+.table{ 
+    display: flex;
+    align-items: center;
+    border-radius: 20px;
+    position: absolute;
+    top: 270px;
+    left: 480px;
+    width: 370px;
+    height: 190px;
+    background: #AFBD72;
+}
+.select{
+    position: absolute;
+    top: 35px;
+    left: 50px;
+    width: 270px;
+    height: 50px;
+    font-size: 25px;
+    background: #F2F2F2;
+}
+button{
+    position: absolute;
+    width: 270px;
+    height: 50px;
+    left: 50px;
+    top: 110px;
+    border-radius: 5px;
+    font-size: 30px;
+
+    text-align: center;
+    cursor: pointer;
+    color: #000;
+    outline: none;
+    background-color: #7A9D01;
+    border: none;
+    box-shadow: 0 5px #143201;
+    translate: translateX(-50%);
+}
+button:hover{
+    box-shadow: rgb(0 0 0 / 25%) 0px -2px inset;
+    min-height: 46px;
+    margin-top: 2px;
+    padding-bottom: 2px;
+}
+button:active {
+    background-color: gray;
+    box-shadow: 0 5px #666;
+    transform: translateY(4px);
+}
+/* button:focus{
+    min-height: 46px;
+    margin-top: 2px;
+    padding-bottom: 2px;
+    background-color: #AFBD72;
+    box-shadow: rgb(0 0 0 / 25%) 0px -2px inset
+} */
